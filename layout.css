@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 
 body {
-    background: #1c75bc url(images/badge.png) no-repeat fixed 50% 20%;
-    background-size: 130%;
+    background: #1c75bc url(images/badge.png) no-repeat fixed 50% 3%;
+    background-size: 110%;
     color: #EEE;
     font-family: "Anonymous Pro", monospace;
     text-align: center;
