@@ -5,11 +5,13 @@ body {
     background-size: 110%;
     color: #EEE;
     font-family: "Anonymous Pro", monospace;
-    text-align: center;
+    margin:0 auto;
+    max-width: 70%;
 }
 
 h1 {
     font-size: 100px;
+    text-align: center;
 }
 
 h1 .small {
@@ -18,4 +20,18 @@ h1 .small {
     margin:0;
     padding:0;
     line-height: 10px;
+}
+
+a {
+    color: white;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #1c75bc;
+    background: #eee;
+}
+
+td {
+    border: 1px solid rgba(255,255,255,0.3);
 }
