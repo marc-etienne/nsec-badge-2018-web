@@ -92,10 +92,39 @@
     </pre>
     <h3>Hacking your badge</h3>
     <p>
-        The USB port exposes a serial device that act as a gdb stub. It is based
-        on the <a href="https://github.com/blacksphere/blackmagic">Black Magic
+        With the conference firware, the USB port exposes a serial device that
+        act as a gdb stub. It is based on the
+        <a href="https://github.com/blacksphere/blackmagic">Black Magic
         Probe</a>. You can use it to read, write and debug the nRF51 micro
         controller with only a micro USB cable.
+    </p>
+    <p>
+        If you have the CTF firmware, you can flash the debugger to the STM32
+        too. First, you need to remove the protection using the following Python
+        script: <a href="https://raw.githubusercontent.com/travisgoodspeed/md380tools/master/stm32-dfu">stm32-dfu.py</a>. First, put you badge in DFU mode by holding the
+        "program" button and pressing the "reset" button. Then plug you badge in
+        and use:
+    </p>
+    <pre>
+        python stm32-dfu.py unprotect
+    </pre>
+    <p>
+        This will erase the CTF firmware, but allow you to upload a new
+        firmware. To upload a new firmware, put your badge in DFU mode again and
+        use <code><a href="http://dfu-util.sourceforge.net">dfu-util</a></code>,
+        with the following settings:
+    </p>
+    <pre>
+        dfu-util --reset --device 0483:df11 --alt 0 --dfuse-address 0x08000000 --download FIRMWARE_FILE.bin
+    </pre>
+    <p>
+        The following firmware images are available:
+    </p>
+    <ul>
+        <li><a href="firmware/nsec17_stm32_conf.bin">NorthSec Conference firmware (with GDB stub)</a></li>
+    </ul>
+    <p>
+        Source code will be available after the event.
     </p>
     <p>More details to come.</p>
     <!-- Here is a temporary banana while you wait: -->
