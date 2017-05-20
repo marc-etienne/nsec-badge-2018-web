@@ -118,10 +118,11 @@
         dfu-util --reset --device 0483:df11 --alt 0 --dfuse-address 0x08000000 --download FIRMWARE_FILE.bin
     </pre>
     <p>
-        The following firmware images are available:
+        The following firmware images are available for the STM32 chip:
     </p>
     <ul>
         <li><a href="firmware/nsec17_stm32_conf.bin">NorthSec Conference firmware (with GDB stub)</a></li>
+        <li><a href="firmware/nsec17_stm32_crossdebug.bin">Probe to debug another badge with the Program In/Out pinout</a></li>
     </ul>
     <p>
         Source code will be available after the event.
