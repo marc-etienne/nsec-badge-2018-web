@@ -2,22 +2,23 @@
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>The NorthSec 2017 Badge</title>
+    <title>The NorthSec 2018 Badge</title>
     <link rel="stylesheet" href="layout.css" type="text/css">
 </head>
 <body>
-    <h1>핰<span class="small">.ga</h1>
-    <h2>The NorthSec 2017 Badge</h2>
+    <h1>sputnak<span class="small">.ga</h1>
+    <h2>The NorthSec 2018 Badge</h2>
     <h3></h3>
     <p>Hey! You found a URL on the badge!</p>
     <p>
-        Come back later. We will update this page and explain the cool stuff you
-        can do with it.
+        Come back later. We will update this page and explain the cool stuff
+        about it.
     </p>
+    <!--
     <h3>Schematics</h3>
     <p>
         Yep, you can download it,
-        <a href="northsec_2017_schematics.pdf">here</a>. We'll release even more
+        <a href="northsec_2018_schematics.pdf">here</a>. We'll release even more
         details soon.
     </p>
     <h3>Customizing your badge</h3>
@@ -90,50 +91,17 @@
     <pre>
         swift nsec17_badge_client.swift --device NSEC1234 --key 5678 [--name NAME | --avatar BITMAP_FILE]
     </pre>
+    -->
     <h3>Hacking your badge</h3>
     <p>
-        With the conference firware, the USB port exposes a serial device that
-        act as a gdb stub. It is based on the
+        The USB port exposes a serial device that act as a gdb stub. It is
+        based on the
         <a href="https://github.com/blacksphere/blackmagic">Black Magic
-        Probe</a>. You can use it to read, write and debug the nRF51 micro
+        Probe</a>. You can use it to read, write and debug the nRF52 micro
         controller with only a micro USB cable.
     </p>
     <p>
-        If you have the CTF firmware, you can flash the debugger to the STM32
-        too. First, you need to remove the protection using the following Python
-        script: <a href="https://raw.githubusercontent.com/travisgoodspeed/md380tools/master/stm32-dfu">stm32-dfu.py</a>. First, put you badge in DFU mode by holding the
-        "program" button and pressing the "reset" button. Then plug you badge in
-        and use:
-    </p>
-    <pre>
-        python stm32-dfu.py unprotect
-    </pre>
-    <p>
-        This will erase the CTF firmware, but allow you to upload a new
-        firmware. To upload a new firmware, put your badge in DFU mode again and
-        use <code><a href="http://dfu-util.sourceforge.net">dfu-util</a></code>,
-        with the following settings:
-    </p>
-    <pre>
-        dfu-util --reset --device 0483:df11 --alt 0 --dfuse-address 0x08000000 --download FIRMWARE_FILE.bin
-    </pre>
-    <p>
-        The following firmware images are available for the STM32 chip:
-    </p>
-    <ul>
-        <li><a href="firmware/nsec17_stm32_conf.bin">NorthSec Conference firmware (with GDB stub)</a></li>
-        <li><a href="firmware/nsec17_stm32_crossdebug.bin">Probe to debug another badge with the Program In/Out pinout</a></li>
-    </ul>
-
-    <p>
-    Connecting two badges together:
-    </p>
-    <p>
-    <img src="images/badges_wired.png" alt="Connecting two badges together" />
-    </p>
-
-    <p>
-        Source code will be available after the event.
+        Source code will be available soon.
     </p>
     <p>More details to come.</p>
     <!-- Here is a temporary banana while you wait: -->
