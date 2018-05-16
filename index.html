@@ -10,88 +10,300 @@
     <h2>The NorthSec 2018 Badge</h2>
     <h3></h3>
     <p>Hey! You found a URL on the badge!</p>
-    <p>
-        Come back later. We will update this page and explain the cool stuff
-        about it.
-    </p>
-    <!--
+    <p>Here is some useful information about the NorthSec badge.</p>
     <h3>Schematics</h3>
     <p>
-        Yep, you can download it,
-        <a href="northsec_2018_schematics.pdf">here</a>. We'll release even more
-        details soon.
+        You can download the full schematics
+        <a href="hw/northsec_2018_schematics.pdf">here</a>.
+    </p>
+    <h3>Battery charge</h3>
+    <p>
+        Protip: Charge the badge with LED and display off to minimize charge
+        time.
     </p>
     <h3>Customizing your badge</h3>
+    <h4>LED patterns</h4>
+    <p>
+        The badge has preprogrammed LED patterns you can chose from the menu.
+        Some of them can be unlocked by finding "codes" in various
+        places during the NorthSec conference.
+    </p>
+    <h4>LED Bluetooth service</h4>
+    <p>
+        The exposed service with UUID `CBCA0000-BFBE-BDBC-BBBA-AFAEADACABAA`
+        controls the RGB LEDs on the badge. The LEDs are driven by a port of
+        the `WS2812FX` Arduino library. The LEDs can be represented as a segment
+        with the following parameters:
+    </p>
+    <ul>
+        <li>Index: a number that represent the "id" of that segment</li>
+        <li>Start index: The first LED of the segment</li>
+        <li>Stop index: The last LED of the segment</li>
+        <li>Mode: Number that represent the pattern to execute on that segment (from basic and extra list)</li>
+        <li>Colors: An array of 3 colors to use by the different mode</li>
+        <li>Speed: The number of milliseconds between the evolution of the mode</li>
+        <li>Reverse: Switch the mode direction</li>
+    </ul>
+    <p>
+        When you change the LED pattern or the LED settings, you actually
+        change the segment 0. Over BLE is possible to create your own set of
+        segments, you can create a segment from LED 0 to LED 3 then another one
+        from LED 4 to LED 7. The only common parameter will be the brightness.
+        The service expose every parameter over different characteristics.
+    </p>
+    <p>
+        Creating your own pattern:
+    </p>
+    <ol>
+        <li>Unlock your service by sending your sync key in text in the Sync Key
+            characteristic, you can read back the `Is Unlock` characteristic to
+            check if your service is unlocked.</li>
+        <li>Select your segment index with the Selected Segment characteristic</li>
+        <li>Select the first and last LED with the Start Index and Last Index
+        characteristic (LED index can overlap with other segments, it's just more fun)</li>
+        <li>Select the mode with the Mode characteristic</li>
+        <li>Default colors are BLEU-RED-GREEN but you can change them with the Colors characteristic</li>
+        <li>Optional, change the Speed</li>
+        <li>Optional, set the Brightness</li>
+        <li>Set the segment to active using the segment `Is Active`
+            characteristic and tadam. The result will stay even if you turn off
+            your badge. You will lose your pattern if you select the segment 0
+            when you select a new one from the list.</li>
+    </ol>
+    <p>
+        You can set the segment to active at anytime and then make modification
+        and see the feedback in real time.
+    </p>
+    <h4>Characteristics</h4>
+    <table rules="all"
+    width="100%"
+    frame="border"
+    cellspacing="0" cellpadding="4">
+    <col width="100%" />
+    <tbody>
+    <tr>
+    <td align="left" valign="top"><p class="table">UUID</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Description</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Size</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Note</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA000B-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Sync Key</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">String 4 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Write only, use the good one, or the service will relock</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA000A-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Is Unlock</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Read only, 0 for locked, 1 for unlock</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0001-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Selected Segment</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Min = 0, Max = 7</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0002-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Start Index</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Min = 0, Max = 7</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0003-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Stop index</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Min = 0, Max = 7</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0004-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Mode</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Select an index in the basic and extra list, the one in extra need to be
+    unlocked</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0005-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Colors</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">12 bytes</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">An array of 3 colors (color1, color2, color3) codex in 4 bytes (R, G, B, W)
+    Ex: Magenta = 0xFF 0x00 0xFF 0x00 (W as no effect)</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0006-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Speed</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">2 bytes</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Min = 0x0A, Max = 0xFFFF (Min is faster than Max)</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0007-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Reverse</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 = Reversed, 0 = Normal</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0008-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Segment is Active</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 = Active, 0 = Inactive</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0009-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Led Brightness</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Min = 0 (close), Max = 100</p></td>
+    </tr>
+    </tbody>
+    </table>
+    <h3>Identity Services</h3>
     <p>
         The badge exposes a Bluetooth Low Energy (BLE) service that allows you
-        to customize your badge wirelessly. The name and the avatar image can be
-        changed.
+        to customize the name on your badge wirelessly.
     </p>
-    <p>The service UUID is <code>6AA99996-93B3-95BA-BC40-42684CDB36FB</code>.
-    <p>
-        Here is a description of the characteristics:
-    </p>
-    <table>
-        <tr>
-            <th>UUID</th>
-            <th>Permissions</th>
-            <th>Size</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>6AA9<b>6E6D</b>-93B3-95BA-BC40-42684CDB36FB</td>
-            <td>Read-Write</td>
-            <td>14 bytes</td>
-            <td>The owner name (defaults to Comrade #00000).</td>
-        </tr>
-        <tr>
-            <td>6AA9<b>6176</b>-93B3-95BA-BC40-42684CDB36FB</td>
-            <td>Read-Write</td>
-            <td>128 bytes</td>
-            <td>The avatar bitmap, 32x32 pixels at 1 bit per pixel.</td>
-        </tr>
-        <tr>
-            <td>6AA9<b>6176</b>-93B3-95BA-BC40-42684CDB36FB</td>
-            <td>Read-Write</td>
-            <td>4 bytes</td>
-            <td>Sync key. Set this to the sync key displayed in the setting menu
-                to "unlock" the badge and allow you to upload a new name and
-                avatar. The badge will relock if you set it to anything else.
-            </td>
-        </tr>
-        <tr>
-            <td>6AA9<b>6177</b>-93B3-95BA-BC40-42684CDB36FB</td>
-            <td>Read-only</td>
-            <td>1 byte</td>
-            <td>Set to 1 if badge is unlocked, 0 otherwise</td>
-        </tr>
+    <p>The service UUID is <code>CBCA0100-BFBE-BDBC-BBBA-AFAEADACABAA</code>.</p>
+    <table rules="all"
+    width="100%"
+    frame="border"
+    cellspacing="0" cellpadding="4">
+    <col width="100%" />
+    <tbody>
+    <tr>
+    <td align="left" valign="top"><p class="table">UUID</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Permissions</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Size</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Description</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0101-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Read-Write</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">14 bytes</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">The owner name (defaults to Cosmonaut <code>#00</code>).</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0102-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Read-Write</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">4 bytes</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Sync key. Set this to the sync key displayed in the setting menu to "unlock"
+    the badge and allow you to upload a new name and avatar. The badge will relock
+    if you set it to anything else.</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table"><code>CBCA0103-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Read-only</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">1 byte</p></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><p class="table">Set to 1 if badge is unlocked, 0 otherwise</p></td>
+    </tr>
+    </tbody>
     </table>
-    <p>
-        To create a customize your badge you shall:
-    </p>
+    <p>To create a customize your badge you shall:</p>
     <ol>
         <li>Connect to your badge via BLE. Your badge ID is on the top left of
             the screen</li>
         <li>Write your sync key to to "Sync key" characteristic.</li>
-        <li>Write your name as a ascii string to the "name" characteristic.</li>
-        <li>Write a 128 byte bitmap to change you avatar</li>
+        <li>Write your name as an ASCII string to the "name"
+            characteristic.</li>
+        <li>Write a 128 byte bitmap to change your avatar</li>
         <li>Write a random value (or nothing) to the "Sync key" characteristic
             to relock and protect your badge from so-called "hackers".</li>
     </ol>
-    <p>
-        "But, I don't want to write code!"
-    </p>
-    <p>
-        Okay, here is a reference implementation for you. Works on macOS.
-    </p>
-    <p>
-        <a href="https://gist.github.com/marc-etienne/b30e2e88b9fba27ca9536b1acb2b23ca">nsec17_badge_client.swift</a>
-        Usage:
-    </p>
-    <pre>
-        swift nsec17_badge_client.swift --device NSEC1234 --key 5678 [--name NAME | --avatar BITMAP_FILE]
-    </pre>
-    -->
     <h3>Hacking your badge</h3>
     <p>
         The USB port exposes a serial device that act as a gdb stub. It is
@@ -103,7 +315,10 @@
     <p>
         Source code will be available soon.
     </p>
-    <p>More details to come.</p>
+    <p>
+        Come back later. We will update this page and explain the cool stuff
+        about it.
+    </p>
     <!-- Here is a temporary banana while you wait: -->
     <!-- http://www.worldwideinterweb.com/images/joomgallery/originals/funny_picture_galleries_689/most_random_pictures_on_the_internet_948/most-random-picture-ever_20150414_1257892901.jpg -->
     <script>
