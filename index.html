@@ -8,9 +8,10 @@
 <body>
     <h1>sputnak<span class="small">.ga</h1>
     <h2>The NorthSec 2018 Badge</h2>
-    <h3></h3>
-    <p>Hey! You found a URL on the badge!</p>
-    <p>Here is some useful information about the NorthSec badge.</p>
+    <p>
+        Hey! You found a URL on the badge!</br>
+        Here is some useful information about the NorthSec badge.
+    </p>
     <h3>Schematics</h3>
     <p>
         You can download the full schematics
@@ -75,159 +76,79 @@
         and see the feedback in real time.
     </p>
     <h4>Characteristics</h4>
-    <table rules="all"
-    width="100%"
-    frame="border"
-    cellspacing="0" cellpadding="4">
-    <col width="100%" />
-    <tbody>
-    <tr>
-    <td align="left" valign="top"><p class="table">UUID</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Description</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Size</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Note</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA000B-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Sync Key</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">String 4 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Write only, use the good one, or the service will relock</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA000A-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Is Unlock</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Read only, 0 for locked, 1 for unlock</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0001-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Selected Segment</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Min = 0, Max = 7</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0002-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Start Index</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Min = 0, Max = 7</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0003-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Stop index</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Min = 0, Max = 7</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0004-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Mode</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Select an index in the basic and extra list, the one in extra need to be
-    unlocked</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0005-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Colors</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">12 bytes</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">An array of 3 colors (color1, color2, color3) codex in 4 bytes (R, G, B, W)
-    Ex: Magenta = 0xFF 0x00 0xFF 0x00 (W as no effect)</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0006-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Speed</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">2 bytes</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Min = 0x0A, Max = 0xFFFF (Min is faster than Max)</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0007-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Reverse</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 = Reversed, 0 = Normal</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0008-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Segment is Active</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 = Active, 0 = Inactive</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0009-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Led Brightness</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Min = 0 (close), Max = 100</p></td>
-    </tr>
-    </tbody>
+    <table id="characteristics">
+        <tr>
+            <th>UUID</th>
+            <th>Description</th>
+            <th>Size</th>
+            <th>Note</th>
+        </tr>
+        <tr>
+            <td><code>CBCA000B-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Sync Key</td>
+            <td>String 4 byte</td>
+            <td>Write only, use the good one, or the service will relock</td>
+        </tr>
+        <tr>
+            <td><code>CBCA000A-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Is Unlock</td>
+            <td></td>
+            <td>Read only, 0 for locked, 1 for unlock</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0001-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Selected Segment</td>
+            <td>1 byte</td>
+            <td>Min = 0, Max = 7</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0002-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Start Index</td>
+            <td>1 byte</td>
+            <td>Min = 0, Max = 7</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0003-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Stop index</td>
+            <td>1 byte</td>
+            <td>Min = 0, Max = 7</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0004-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Mode</td>
+            <td>1 byte</td>
+            <td>Select an index in the basic and extra list,</br> the one in extra need to be unlocked</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0005-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Colors</td>
+            <td>12 bytes</td>
+            <td>An array of 3 colors (color1, color2, color3) codex in </br>4 bytes (R, G, B, W)</br>Ex: Magenta = 0xFF 0x00 0xFF 0x00 (W as no effect)</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0006-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Speed</td>
+            <td>2 bytes</td>
+            <td>Min = 0x0A, Max = 0xFFFF (Min is faster than Max)</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0007-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Reverse</td>
+            <td>1 byte</td>
+            <td>1 = Reversed, 0 = Normal</td>        
+        </tr>
+        <tr>
+            <td><code>CBCA0008-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Segment is Active</td>
+            <td>1 byte</td>
+            <td>1 = Active, 0 = Inactive</td>        
+        </tr>
+        <tr>
+            <td><code>CBCA0009-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Led Brightness</td>
+            <td>1 byte</td>
+            <td>Min = 0 (close), Max = 100</td>    
+        </tr>
     </table>
     <h3>Identity Services</h3>
     <p>
@@ -235,63 +156,30 @@
         to customize the name on your badge wirelessly.
     </p>
     <p>The service UUID is <code>CBCA0100-BFBE-BDBC-BBBA-AFAEADACABAA</code>.</p>
-    <table rules="all"
-    width="100%"
-    frame="border"
-    cellspacing="0" cellpadding="4">
-    <col width="100%" />
-    <tbody>
-    <tr>
-    <td align="left" valign="top"><p class="table">UUID</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Permissions</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Size</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Description</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0101-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Read-Write</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">14 bytes</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">The owner name (defaults to Cosmonaut <code>#00</code>).</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0102-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Read-Write</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">4 bytes</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Sync key. Set this to the sync key displayed in the setting menu to "unlock"
-    the badge and allow you to upload a new name and avatar. The badge will relock
-    if you set it to anything else.</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table"><code>CBCA0103-BFBE-BDBC-BBBA-AFAEADACABAA</code></p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Read-only</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">1 byte</p></td>
-    </tr>
-    <tr>
-    <td align="left" valign="top"><p class="table">Set to 1 if badge is unlocked, 0 otherwise</p></td>
-    </tr>
-    </tbody>
+    <table id="identity_services">
+        <tr>
+            <th>UUID</th>
+            <th>Permissions</th>
+            <th>Size</th>
+            <th>Description</th>
+        <tr>
+            <td><code>CBCA0101-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Read-Write</td>
+            <td>14 bytes</td>
+            <td>The owner name (defaults to Cosmonaut <code>#00</code>).</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0102-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Read-Write</td>
+            <td>4 bytes</td>
+            <td>Sync key. Set this to the sync key displayed in the setting menu</br> to "unlock" the badge and allow you to upload a new name and avatar.</br> The badge will relock if you set it to anything else.</td>
+        </tr>
+        <tr>
+            <td><code>CBCA0103-BFBE-BDBC-BBBA-AFAEADACABAA</code></td>
+            <td>Read-only</td>
+            <td>1 byte</td>
+            <td>Set to 1 if badge is unlocked, 0 otherwise</td>            
+        </tr>
     </table>
     <p>To create a customize your badge you shall:</p>
     <ol>
