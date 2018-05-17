@@ -197,8 +197,42 @@
         The USB port exposes a serial device that act as a gdb stub. It is
         based on the
         <a href="https://github.com/blacksphere/blackmagic">Black Magic
-        Probe</a>. You can use it to read, write and debug the nRF52 micro
-        controller with only a micro USB cable.
+        Probe</a>. You can use it to read, write memory and debug the nRF52
+        micro-controller with only a micro USB cable.
+    </p>
+    <p>
+        All you need to hack the nRF52 firmware is gdb with support for ARM.
+        First, download the following target description:
+    </p>
+    <ul>
+        <li><a href="nrf52/gdb-tdesc-cortex-m4f.xml">gdb-tdesc-cortex-m4f.xml</a></li>
+    </ul>
+    <p>
+        On Linux the gdb stub should appear as <code>/dev/ttyACM*</code> on
+        recent distros when the USB is plugged in. On macOS, it should be
+        <code>/dev/cu.usbmodem*</code>.
+    </p>
+    <p>
+        Use the following gdb commands to attach to the badge micro-controller:
+    </p>
+    <pre><code>
+        target extended-remote /dev/{badge_serial_device}
+        set gnutarget elf32-littlearm
+        # Make sure gdb-tdesc-cortex-m4f.xml is in the current working directory
+        set tdesc filename gdb-tdesc-cortex-m4f.xml
+        monitor swdp_scan
+        # You should see the nRF52 listed in the scan.
+        attach 1
+        set mem inaccessible-by-default off
+        set debug arm
+    </code></pre>
+    <p>
+        From there, you can use the usual gdb commands such as
+        <code>break</code>, <code>dump</code> and <code>load</code>.
+    </p>
+    <p>
+        You can reset the debugger with the RESET button on back of the badge.
+        It's sometimes useful if the gdb stub stops responding.
     </p>
     <p>
         Source code will be available soon.
